@@ -53,3 +53,29 @@ Este é o meu portfólio profissional online, desenvolvido para apresentar minha
 ---
 
 ## 📂 Estrutura do Projeto
+
+
+portifolio/
+├── index.html # Página principal do portfólio
+├── README.md # Este arquivo
+├── foto (1).jpg # Foto de perfil
+└── assets/ # (Opcional) Arquivos adicionais
+
+
+---
+
+## 🚀 Como Visualizar
+
+### Opção 1: Acesse Online
+[https://aninhatata.github.io/portifolio/](https://aninhatata.github.io/portifolio/)
+
+### Opção 2: Execute Localmente
+```bash
+# Clone o repositório
+git clone https://github.com/AninhaTata/portifolio.git
+
+# Navegue até a pasta
+cd portifolio
+
+# Abra no navegador
+open index.html  # ou clique duas vezes no arquivo
