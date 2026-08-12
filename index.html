@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Paula Araújo da Silva | Portfólio Profissional</title>
+    <title>Ana Paula | Portfólio de Dados</title>
     
-    <!-- Fontes e ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -17,1097 +16,788 @@
         }
 
         :root {
-            --primary: #1e3a8a;
-            --primary-light: #2563eb;
-            --primary-dark: #1e40af;
-            --accent: #0f2f5f;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --purple: #8b5cf6;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f9fafb;
-            --card: #ffffff;
-            --border: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
+            --primary: #0a1628;
+            --secondary: #1a3a6b;
+            --accent: #00d4ff;
+            --accent2: #7c3aed;
+            --accent3: #10b981;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --bg: #0a1628;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --radius: 20px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+        .animate-delay-5 { animation-delay: 0.5s; }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Header com gradiente */
-        .header {
-            background: linear-gradient(135deg, #081a36 0%, #0f2f5f 40%, #2a5298 100%);
-            color: white;
-            padding: 3rem 0 5rem;
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 2rem;
+            overflow: hidden;
+            padding: 80px 0;
         }
 
-        .header::after {
+        .hero::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .header-content {
-            display: flex;
-            flex-direction: column;
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
         }
 
-        .profile-img img {
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 500px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .hero-tag i {
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-avatar {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .header h2 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #bfdbfe;
-            margin-bottom: 1rem;
-        }
-
-        .header-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Cards de contato */
-        .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: -3rem;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .contact-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .contact-info h3 {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-info p {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        /* Seções */
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-light), transparent);
-        }
-
-        .section-title i {
-            color: var(--primary-light);
-            font-size: 1.8rem;
-        }
-
-        /* Cards de experiência e formação */
-        .timeline {
-            position: relative;
-        }
-
-        .timeline::before {
+        .hero-avatar::after {
             content: '';
             position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .timeline-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            inset: -8px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+            z-index: -1;
+            opacity: 0.3;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            z-index: 2;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-        }
-
-        .timeline-content {
-            flex: 1;
-            background: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            gap: 1rem;
+            animation: float 4s ease-in-out infinite;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
         }
 
-        .timeline-content h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
+        .floating-badge:nth-child(2) {
+            top: 10%;
+            right: -10%;
+            animation-delay: 1s;
         }
 
-        .timeline-content .date {
-            display: inline-block;
-            background: #e6f0ff;
-            color: var(--primary);
-            font-weight: 600;
+        .floating-badge:nth-child(3) {
+            bottom: 10%;
+            left: -10%;
+            animation-delay: 2s;
+        }
+
+        .floating-badge .number {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .floating-badge .label {
             font-size: 0.85rem;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
             color: var(--text-light);
-            line-height: 1.7;
         }
 
-        .timeline-content ul {
-            margin-top: 1rem;
-            list-style: none;
-        }
-
-        .timeline-content ul li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text);
-        }
-
-        .timeline-content ul li i {
-            color: var(--success);
-            font-size: 0.9rem;
-        }
-
-        /* Grid de habilidades */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .skill-header h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .skill-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .skill-bar-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .skill-bar-label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-        }
-
-        .skill-bar-progress {
-            height: 8px;
-            background: var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            border-radius: 10px;
-        }
-
-        /* Grade curricular */
-        .grade-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .grade-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .grade-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .grade-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: white;
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .grade-card h3 i {
-            font-size: 1.2rem;
-        }
-
-        .grade-card ul {
-            list-style: none;
-        }
-
-        .grade-card ul li {
-            padding: 0.5rem 0;
+        /* ===== SEÇÕES ===== */
+        .section {
+            padding: 80px 0;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .grade-card ul li:last-child {
+        .section:last-of-type {
             border-bottom: none;
         }
 
-        .grade-card ul li span {
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header .badge-section {
+            display: inline-block;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.8rem;
             font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
 
-        .badge {
-            background: #e6f0ff;
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
         }
 
-        .badge-destaque {
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
+        .section-header h2 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .badge-success {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .grade-card .resumo-uta {
-            margin-top: 0.8rem;
-            font-size: 0.85rem;
+        .section-header p {
             color: var(--text-light);
-            background: #f8fafc;
-            padding: 0.5rem 0.8rem;
-            border-radius: 6px;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+            font-size: 1.1rem;
         }
 
-        .grade-card .resumo-uta i {
-            color: var(--success);
-        }
-
-        /* Portfólio de painéis */
-        .portfolio-grid {
+        /* ===== PROJETOS EM DESTAQUE ===== */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
         }
 
-        .portfolio-card {
-            background: white;
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
-        .portfolio-preview {
+        .project-card .preview {
             height: 200px;
-            background: linear-gradient(135deg, #1e3a8a, #2a5298);
-            position: relative;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card .preview i {
+            font-size: 4rem;
+            opacity: 0.2;
             color: white;
         }
 
-        .portfolio-preview i {
-            font-size: 4rem;
-            opacity: 0.3;
-        }
-
-        .portfolio-badge {
+        .project-card .preview .badge-top {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 0.3rem 0.8rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 700;
-            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .portfolio-content {
+        .project-card .preview .badge-top.gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .project-card .preview .badge-top.silver {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+        }
+
+        .project-card .preview .badge-top.bronze {
+            background: linear-gradient(135deg, #d97706, #92400e);
+        }
+
+        .project-card .info {
             padding: 1.5rem;
         }
 
-        .portfolio-content h3 {
+        .project-card .info h3 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--text);
         }
 
-        .portfolio-content p {
+        .project-card .info p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
-        .portfolio-stats {
+        .project-card .info .techs {
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-card .info .techs span {
+            background: var(--bg);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .project-card .info .stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
             font-size: 0.85rem;
             color: var(--text-light);
         }
 
-        .portfolio-stats i {
-            color: var(--primary);
+        .project-card .info .stats i {
+            color: var(--accent);
+            margin-right: 0.3rem;
         }
 
-        /* Análise SWOT */
-        .swot-grid {
+        /* ===== TODOS OS PROJETOS ===== */
+        .all-projects {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .all-projects .item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .all-projects .item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .all-projects .item i {
+            color: var(--accent3);
+            font-size: 0.8rem;
+        }
+
+        /* ===== GRADE CURRICULAR ===== */
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
-        .swot-card {
+        .grade-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.5rem;
-            color: white;
+            transition: all 0.3s ease;
         }
 
-        .swot-card.strengths {
-            background: linear-gradient(135deg, #10b981, #059669);
+        .grade-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
         }
 
-        .swot-card.weaknesses {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .swot-card.opportunities {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .swot-card.threats {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
-
-        .swot-card h3 {
-            font-size: 1.3rem;
+        .grade-item h4 {
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .swot-card ul {
+        .grade-item ul {
             list-style: none;
         }
 
-        .swot-card ul li {
-            margin-bottom: 0.75rem;
+        .grade-item ul li {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .swot-card ul li i {
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border);
             font-size: 0.9rem;
         }
 
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #081a36, #0f2f5f);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
+        .grade-item ul li:last-child {
+            border-bottom: none;
+        }
+
+        .grade-item ul li .badge {
+            background: var(--bg);
+            padding: 0.1rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .grade-item ul li .badge.destaque {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .total-hours {
             text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: var(--radius);
         }
 
-        .footer i {
+        .total-hours h3 {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #93c5fd;
+            font-weight: 900;
+            color: white;
         }
 
-        .footer p {
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
+        .total-hours p {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .social-links {
+        /* ===== CONTATO ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
             display: flex;
+            align-items: center;
             gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .contact-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.3rem;
             color: white;
-            font-size: 1.2rem;
+        }
+
+        .contact-card .info h4 {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact-card .info p {
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer .social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer .social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
             transition: all 0.3s ease;
             text-decoration: none;
         }
 
-        .social-link:hover {
-            background: var(--primary-light);
+        .footer .social a:hover {
+            border-color: var(--accent);
             transform: translateY(-3px);
         }
 
-        /* Botão do currículo */
-        .btn-primary {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-            transition: transform 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Carga horária destaque */
-        .carga-horaria-destaque {
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            color: white;
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .carga-horaria-destaque p {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .carga-horaria-destaque span {
-            margin: 0.5rem 0 0;
-            opacity: 0.9;
-            font-size: 1rem;
-            display: block;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header h2 {
-                font-size: 1.1rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .swot-grid {
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 968px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .grade-grid {
-                grid-template-columns: 1fr;
+            .hero-content p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-avatar {
+                width: 280px;
+                height: 280px;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .contact-cards {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-avatar {
+                width: 220px;
+                height: 220px;
+            }
+
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .portfolio-grid {
+            .all-projects {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
         <div class="container">
-            <div class="header-content">
-                <div class="profile-img">
-                    <img src="https://raw.githubusercontent.com/AninhaTata/portifolio/main/foto%20(1).jpg" alt="Ana Paula">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="animate animate-delay-1">
+                        <h1>Oi, eu sou <br><span class="highlight">Ana Paula</span></h1>
+                        <h2>Tecnóloga em Ciência de Dados</h2>
+                        <p>Especialista em dashboards interativos e análise de dados para tomada de decisão. <strong>98 projetos</strong> desenvolvidos para gestão da saúde pública.</p>
+                    </div>
+
+                    <div class="hero-tags animate animate-delay-2">
+                        <span class="hero-tag"><i class="fas fa-chart-line"></i> 98 Dashboards</span>
+                        <span class="hero-tag"><i class="fas fa-graduation-cap"></i> UNINTER 2026</span>
+                        <span class="hero-tag"><i class="fas fa-code"></i> JavaScript • Python • SQL</span>
+                        <span class="hero-tag"><i class="fas fa-heart"></i> Saúde Pública</span>
+                    </div>
+
+                    <div class="hero-buttons animate animate-delay-3">
+                        <a href="#projetos" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i> Ver Projetos
+                        </a>
+                        <a href="#contato" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contato
+                        </a>
+                    </div>
                 </div>
-                <h1>Ana Paula Araújo da Silva</h1>
-                <h2>Tecnólogia em Ciência de Dados • Especialista em Dashboards</h2>
-                <div class="header-tags">
-                    <span class="tag"><i class="fas fa-chart-line"></i> 58 Painéis Desenvolvidos</span>
-                    <span class="tag"><i class="fas fa-graduation-cap"></i> Tecnólogia em Ciências de Dados Uninter - UNINTER 2026</span>
-                    <span class="tag"><i class="fas fa-code"></i> JavaScript • Python • SQL</span>
-                </div>
-                <div style="margin-top: 2rem;">
-                    <a href="" target="_blank" class="btn-primary">
-                        <i class="fas fa-file-alt"></i> Ver Currículo Completo
-                    </a>
+
+                <div class="hero-image animate animate-delay-4">
+                    <div class="hero-avatar">
+                        <img src="https://raw.githubusercontent.com/AninhaTata/portifolio/main/foto%20(1).jpg" alt="Ana Paula">
+                    </div>
+                    <div class="floating-badge" style="top: 5%; right: -5%;">
+                        <span class="number">98</span>
+                        <span class="label">Projetos<br>Concluídos</span>
+                    </div>
+                    <div class="floating-badge" style="bottom: 10%; left: -8%;">
+                        <span class="number">15</span>
+                        <span class="label">Anos de<br>Experiência</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <div class="container">
-        <!-- CARDS DE CONTATO -->
-        <div class="contact-cards">
-            <div class="contact-card">
-                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <div class="contact-info">
-                    <h3>E-mail</h3>
-                    <p>aninhappessoal@gmail.com</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                <div class="contact-info">
-                    <h3>Telefone</h3>
-                    <p>(31) 98498-7116 (Somente WhatsApp)</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="contact-info">
-                    <h3>Localização</h3>
-                    <p>Contagem - MG</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon"><i class="fab fa-github"></i></div>
-                <div class="contact-info">
-                    <h3>GitHub</h3>
-                    <p>AnaDesenvolvedora</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- OBJETIVO -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-bullseye"></i> Objetivo Profissional</h2>
-            <div style="background: linear-gradient(135deg, #e6f0ff, #ffffff); padding: 2rem; border-radius: var(--radius); border-left: 4px solid var(--primary);">
-                <p style="font-size: 1.2rem; line-height: 1.8;">Atuar como <strong>Analista de Dados</strong> ou <strong>Cientista de Dados</strong>, aplicando conhecimentos em análise, visualização e modelagem de dados para apoiar a tomada de decisões estratégicas. Especialista em criação de dashboards interativos e painéis gerenciais, com <strong>58 projetos desenvolvidos</strong> para o setor público de saúde.</p>
-            </div>
-        </section>
-
-        <!-- FORMAÇÃO ACADÊMICA -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-university"></i></div>
-                    <div class="timeline-content">
-                        <h3>Tecnólogo em Ciência de Dados <span class="badge-success" style="padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-left: 0.5rem;">✓ Concluído 2026</span></h3>
-                        <span class="date">06/2023 – 07/2026 • Concluído</span>
-                        <p><strong>Centro Universitário Internacional UNINTER</strong> • Educação Superior</p>
-                        <p style="font-size: 0.9rem; color: #6b7280;">Reconhecido pela Portaria n.º 636 de 14/11/2024</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Lógica de Programação e Algoritmos</li>
-                            <li><i class="fas fa-check-circle"></i> Banco de Dados e NoSQL</li>
-                            <li><i class="fas fa-check-circle"></i> Inteligência Artificial Aplicada</li>
-                            <li><i class="fas fa-check-circle"></i> Machine Learning e Deep Learning</li>
-                            <li><i class="fas fa-check-circle"></i> Visualização de Dados e Storytelling</li>
-                            <li><i class="fas fa-check-circle"></i> Big Data e Computação em Nuvem</li>
-                        </ul>
-                        <p style="margin-top: 1rem;"><strong>Carga horária total:</strong> 2.145 horas</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="timeline-content">
-                        <h3>Curso de Assistente Administrativo</h3>
-                        <span class="date">06/2024 – 09/2024 • Concluído</span>
-                        <p><strong>Instituto Federal do RS</strong></p>
-                        <p>200 horas • Aproveitamento: 85,50%</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-chart-pie"></i></div>
-                    <div class="timeline-content">
-                        <h3>Curso Desafio DashEm7</h3>
-                        <span class="date">Concluído em 24/06/2024</span>
-                        <p><strong>Doutores do Excel</strong> • 7 horas</p>
-                        <p>Fórmulas PROCX e PROCV • Tabelas Dinâmicas • Dashboards no Excel • Power Query</p>
-                        <p style="margin-top: 0.5rem;"><span class="badge">Nota 10.0</span> <span class="badge">100% Frequência</span></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIÊNCIA PROFISSIONAL -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiência Profissional</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-building"></i></div>
-                    <div class="timeline-content">
-                        <h3>Assistente Administrativo / Analista de Dados</h3>
-                        <span class="date">08/2011 – Atual (15 anos)</span>
-                        <p><strong>Prefeitura Municipal de Contagem</strong> • Contagem/MG</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> <strong>Desenvolvimento de 58 painéis interativos</strong> para gestão da regulação em saúde, utilizando HTML, CSS, JavaScript, Chart.js e Google Sheets.</li>
-                            <li><i class="fas fa-check-circle"></i> Análise de banco de dados para formulação de relatórios e higienização da fila de espera no processo de regulação do SUS.</li>
-                            <li><i class="fas fa-check-circle"></i> Elaboração de planilhas e consolidados para análise e tomada de decisões estratégicas.</li>
-                            <li><i class="fas fa-check-circle"></i> Criação de consolidados para avaliação de indicadores de desempenho.</li>
-                            <li><i class="fas fa-check-circle"></i> Suporte em plataformas operacionais e treinamento de sistemas.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-headset"></i></div>
-                    <div class="timeline-content">
-                        <h3>Operador de Telemarketing</h3>
-                        <span class="date">10/2009 – 06/2010</span>
-                        <p><strong>AeC</strong> • Belo Horizonte/MG</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Atendimento ao cliente via e-mail, chat e telefone.</li>
-                            <li><i class="fas fa-check-circle"></i> Negociação de valores e débitos pendentes.</li>
-                            <li><i class="fas fa-check-circle"></i> Análise e tratamento de banco de dados para tomada de decisões.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HABILIDADES -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-code"></i> Habilidades e Competências</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon"><i class="fas fa-database"></i></div>
-                        <h3>Banco de Dados</h3>
-                    </div>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>MySQL</span><span>80%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:80%"></div></div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>NoSQL</span><span>70%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
-                        <h3>Análise de Dados</h3>
-                    </div>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>Excel</span><span>95%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:95%"></div></div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>Dashboards</span><span>98%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:98%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>Programação</h3>
-                    </div>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>JavaScript</span><span>85%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:85%"></div></div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>Python</span><span>75%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:75%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon"><i class="fas fa-tools"></i></div>
-                        <h3>Ferramentas</h3>
-                    </div>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>Chart.js</span><span>90%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:90%"></div></div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-label"><span>Google Sheets</span><span>95%</span></div>
-                            <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:95%"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GRADE CURRICULAR COMPLETA -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-book-open"></i> Grade Curricular - Tecnologia em Ciência de Dados</h2>
-            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
-                <strong>UNINTER</strong> • Concluído em 2026 • Carga horária total: <strong>2.145 horas</strong>
-                <br>
-                <span style="font-size: 0.95rem; color: var(--text-light);">Reconhecido pela Portaria n.º 636 de 14/11/2024</span>
-            </p>
-
-            <div class="grade-grid">
-                <!-- UTA FORMAÇÃO INICIAL -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-seedling"></i> UTA FORMAÇÃO INICIAL</h3>
-                    <ul>
-                        <li><span>Formação Inicial em Educação a Distância</span> <span class="badge">40h</span></li>
-                        <li><span>Educação das Relações Étnico-Raciais</span> <span class="badge">65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> Ambientação e fundamentos da EAD
-                    </div>
-                </div>
-
-                <!-- UTA NÚCLEO INTRODUTÓRIO -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-seedling"></i> UTA NÚCLEO INTRODUTÓRIO</h3>
-                    <ul>
-                        <li><span>Lógica de Programação e Algoritmos</span> <span class="badge">65h</span></li>
-                        <li><span>Banco de Dados</span> <span class="badge">65h</span></li>
-                        <li><span>Probabilidade e Estatística</span> <span class="badge">65h</span></li>
-                        <li><span>Pré-Cálculo</span> <span class="badge">65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> Fundamentos da programação e pensamento computacional
-                    </div>
-                </div>
-
-                <!-- UTA INTELIGÊNCIA ARTIFICIAL -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-robot"></i> UTA INTELIGÊNCIA ARTIFICIAL</h3>
-                    <ul>
-                        <li><span>Cálculo Diferencial e Integral</span> <span class="badge">65h</span></li>
-                        <li><span>Sistema Gerenciador de BD</span> <span class="badge">65h</span></li>
-                        <li><span>Inteligência Artificial Aplicada</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span>Linguagem de Programação</span> <span class="badge">65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> <strong>★ Destaque:</strong> Inteligência Artificial Aplicada
-                    </div>
-                </div>
-
-                <!-- UTA PROGRAMAÇÃO E ESTRUTURA DE DADOS -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-code"></i> UTA PROGRAMAÇÃO E ESTRUTURA DE DADOS</h3>
-                    <ul>
-                        <li><span>Álgebra Linear</span> <span class="badge">65h</span></li>
-                        <li><span>Estrutura de Dados</span> <span class="badge">65h</span></li>
-                        <li><span>Legislação, Ética e Conformidade</span> <span class="badge">65h</span></li>
-                        <li><span>Engenharia de Software</span> <span class="badge">65h</span></li>
-                        <li><span><strong>Atividades Extensionistas I</strong></span> <span class="badge-destaque">110h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> Desenvolvimento de software e boas práticas
-                    </div>
-                </div>
-
-                <!-- UTA NUVEM E ESTATÍSTICA -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-cloud"></i> UTA NUVEM E ESTATÍSTICA</h3>
-                    <ul>
-                        <li><span>Ferramentas de Desenvolvimento Web</span> <span class="badge">65h</span></li>
-                        <li><span>Programação Orientada a Objetos</span> <span class="badge">65h</span></li>
-                        <li><span>Modelagem Estatística</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span>Computação em Nuvem</span> <span class="badge">65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> <strong>★ Destaque:</strong> Modelagem Estatística
-                    </div>
-                </div>
-
-                <!-- UTA DADOS E OPERAÇÃO -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-database"></i> UTA DADOS E OPERAÇÃO</h3>
-                    <ul>
-                        <li><span>Computação Paralela</span> <span class="badge">65h</span></li>
-                        <li><span>Segurança em Sistemas de Informação</span> <span class="badge">65h</span></li>
-                        <li><span>Visualização de Dados e Storytelling</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span>Banco de Dados NoSQL</span> <span class="badge">65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> <strong>★ Destaque:</strong> Visualização de Dados e Storytelling
-                    </div>
-                </div>
-
-                <!-- UTA GESTÃO DE DADOS -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-chart-pie"></i> UTA GESTÃO DE DADOS</h3>
-                    <ul>
-                        <li><span>Machine Learning</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span>Matemática Discreta</span> <span class="badge">65h</span></li>
-                        <li><span>Visão Computacional</span> <span class="badge">65h</span></li>
-                        <li><span>Análise Exploratória de Dados</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span><strong>Atividades Extensionistas II</strong></span> <span class="badge-destaque">110h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> <strong>★ Destaques:</strong> Machine Learning, Análise Exploratória de Dados
-                    </div>
-                </div>
-
-                <!-- UTA APLICAÇÃO ESPECÍFICA -->
-                <div class="grade-card">
-                    <h3><i class="fas fa-rocket"></i> UTA APLICAÇÃO ESPECÍFICA</h3>
-                    <ul>
-                        <li><span>Big Data</span> <span class="badge-destaque">★ 65h</span></li>
-                        <li><span>Natural Language Processing</span> <span class="badge">65h</span></li>
-                        <li><span>Reinforcement Learning</span> <span class="badge">65h</span></li>
-                        <li><span>Deep Learning</span> <span class="badge-destaque">★ 65h</span></li>
-                    </ul>
-                    <div class="resumo-uta">
-                        <i class="fas fa-check-circle"></i> <strong>★ Destaques:</strong> Big Data, Deep Learning
-                    </div>
-                </div>
+    <!-- ===== PROJETOS EM DESTAQUE ===== -->
+    <section class="section" id="projetos">
+        <div class="container">
+            <div class="section-header animate">
+                <span class="badge-section"><i class="fas fa-star"></i> Destaques</span>
+                <h2>Meus <span class="highlight">Projetos</span></h2>
+                <p>Conheça alguns dos 98 dashboards interativos que desenvolvi para a gestão da saúde pública</p>
             </div>
 
-            <!-- CARGA HORÁRIA TOTAL -->
-            <div class="carga-horaria-destaque">
-                <p><i class="fas fa-clock" style="margin-right: 0.5rem;"></i> CARGA HORÁRIA TOTAL: 2.145 HORAS</p>
-                <span>Formação concluída em julho de 2026</span>
-            </div>
-        </section>
-
-        <!-- PORTFÓLIO - 58 PAINÉIS -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-chart-line"></i> Meu Legado em Números: 98 Painéis Interativos</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Total de <strong>98 painéis interativos</strong> criados para a gestão da saúde pública, utilizando HTML, CSS, JavaScript, Chart.js, Google Sheets e integrações diversas. Este é o meu principal legado profissional.</p>
-            
-            <div class="portfolio-grid">
-                <!-- TOP 1 -->
-                <div class="portfolio-card" style="border-top: 4px solid #f59e0b;">
-                    <div class="portfolio-preview">
-                        <i class="fas fa-trophy" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2; font-size: 5rem;"></i>
-                        <span class="portfolio-badge" style="background: #f59e0b;">🥇 DESTAQUE #1</span>
+            <div class="projects-grid">
+                <!-- Card 1 -->
+                <div class="project-card animate animate-delay-1">
+                    <div class="preview">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="badge-top gold">🥇 Destaque</span>
                     </div>
-                    <div class="portfolio-content">
+                    <div class="info">
                         <h3>Painel Consolidado - Saúde</h3>
-                        <p>Dashboard completo com 10+ gráficos, multi-select customizado, gauges interativos e área financeira. Integração com Google Sheets em tempo real.</p>
-                        <div class="portfolio-stats">
+                        <p>Dashboard completo com 12 gráficos interativos, multi-select customizado e integração com Google Sheets em tempo real.</p>
+                        <div class="techs">
+                            <span>Chart.js</span>
+                            <span>Google Sheets</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="stats">
                             <span><i class="fas fa-chart-bar"></i> 12 gráficos</span>
-                            <span><i class="fas fa-filter"></i> Multi-select</span>
-                            <span><i class="fas fa-dollar-sign"></i> Financeiro</span>
+                            <span><i class="fas fa-filter"></i> Filtros</span>
+                            <span><i class="fas fa-sync"></i> Tempo real</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- TOP 2 -->
-                <div class="portfolio-card" style="border-top: 4px solid #3b82f6;">
-                    <div class="portfolio-preview">
-                        <i class="fas fa-calendar-check" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2; font-size: 5rem;"></i>
-                        <span class="portfolio-badge">🥈 DESTAQUE #2</span>
+                <!-- Card 2 -->
+                <div class="project-card animate animate-delay-2">
+                    <div class="preview">
+                        <i class="fas fa-calendar-check"></i>
+                        <span class="badge-top silver">🥈 Destaque</span>
                     </div>
-                    <div class="portfolio-content">
+                    <div class="info">
                         <h3>Consolidado de Vagas</h3>
-                        <p>Lógica complexa de classificação (vaga livre/bloqueada/agendada). Cards coloridos por status e múltiplas tabelas de resumo.</p>
-                        <div class="portfolio-stats">
+                        <p>Sistema de classificação com 3 status (livre/bloqueada/agendada), cards coloridos e 8 tabelas de resumo.</p>
+                        <div class="techs">
+                            <span>JavaScript</span>
+                            <span>CSS3</span>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="stats">
                             <span><i class="fas fa-tag"></i> 3 status</span>
                             <span><i class="fas fa-table"></i> 8 tabelas</span>
                             <span><i class="fas fa-clock"></i> Destaque por prazo</span>
@@ -1115,16 +805,21 @@
                     </div>
                 </div>
 
-                <!-- TOP 3 -->
-                <div class="portfolio-card" style="border-top: 4px solid #10b981;">
-                    <div class="portfolio-preview">
-                        <i class="fas fa-exclamation-triangle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2; font-size: 5rem;"></i>
-                        <span class="portfolio-badge">🥉 DESTAQUE #3</span>
+                <!-- Card 3 -->
+                <div class="project-card animate animate-delay-3">
+                    <div class="preview">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="badge-top bronze">🥉 Destaque</span>
                     </div>
-                    <div class="portfolio-content">
+                    <div class="info">
                         <h3>Pendências por Distrito</h3>
-                        <p>Integração com 16 planilhas (8 distritos × 2 tipos). Destaque automático para prazos críticos (≤10 dias) e lógica de cancelamento por vencimento.</p>
-                        <div class="portfolio-stats">
+                        <p>Integração com 16 planilhas (8 distritos × 2 tipos), destaque para prazos críticos e lógica de cancelamento.</p>
+                        <div class="techs">
+                            <span>Google Sheets</span>
+                            <span>Chart.js</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="stats">
                             <span><i class="fas fa-database"></i> 16 fontes</span>
                             <span><i class="fas fa-highlighter"></i> Destaque</span>
                             <span><i class="fas fa-chart-pie"></i> 9 gráficos</span>
@@ -1132,67 +827,186 @@
                     </div>
                 </div>
             </div>
-
-            <div style="margin-top: 2rem; background: #f3f4f6; border-radius: var(--radius); padding: 1.5rem;">
-                <h3 style="margin-bottom: 1rem;">📊 Top 12 dos 98 painéis desenvolvidos:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem;">
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Ouvidoria</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Censo IBGE</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Exames Laboratoriais</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> CCE Iria Diniz</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Distritos Sanitários</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Contatos Diversos</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Fluxos de Exames</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Relação de Exames</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Ferramentas Adm (x3)</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Profissionais</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Pendências Geral</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> Consolidado Vagas</span>
-                    <span><i class="fas fa-check-circle" style="color: #10b981;"></i> +45 outros painéis complementares</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SWOT -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Análise SWOT Profissional</h2>
-            <div class="swot-grid">
-                <div class="swot-card strengths">
-                    <h3><i class="fas fa-plus-circle"></i> FORÇAS</h3>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 98 projetos completos e funcionais</li>
-                        <li><i class="fas fa-check"></i> Domínio de JavaScript puro</li>
-                        <li><i class="fas fa-check"></i> Lógica de negócio complexa</li>
-                        <li><i class="fas fa-check"></i> Integrações com Google Sheets</li>
-                        <li><i class="fas fa-check"></i> Visualização de dados (Chart.js)</li>
-                        <li><i class="fas fa-check"></i> Formação superior concluída em 2026</li>
-                    </ul>
-                </div>
-                <div class="swot-card opportunities">
-                    <h3><i class="fas fa-rocket"></i> OPORTUNIDADES</h3>
-                    <ul>
-                        <li><i class="fas fa-arrow-right"></i> Desenvolvedora WEB</li>
-                        <li><i class="fas fa-arrow-right"></i> Especialização em Machine Learning</li>
-                        <li><i class="fas fa-arrow-right"></i> Consultoria em dados para saúde</li>
-                        <li><i class="fas fa-arrow-right"></i> Portfólio como diferencial competitivo</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <i class="fas fa-heartbeat"></i>
-        <p><strong>Ana Paula Araújo da Silva</strong></p>
-        <p>Tecnóloga em Ciência de Dados • Especialista em Dashboards</p>
-        <p style="margin-top: 1rem;">aninhappessoal@gmail.com • (31) 98498-7116</p>
-        <div class="social-links">
-            <a href="https://github.com/AnaDesenvolvedora" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">© 2026 • Portfólio desenvolvido com base na minha trajetória profissional.</p>
+    </section>
+
+    <!-- ===== TODOS OS PROJETOS ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header animate">
+                <span class="badge-section"><i class="fas fa-list"></i> Lista Completa</span>
+                <h2><span class="highlight">98</span> Projetos Desenvolvidos</h2>
+                <p>Dashboards interativos para gestão da regulação em saúde</p>
+            </div>
+
+            <div class="all-projects animate">
+                <div class="item"><i class="fas fa-check-circle"></i> Ouvidoria</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Censo IBGE</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Exames Laboratoriais</div>
+                <div class="item"><i class="fas fa-check-circle"></i> CCE Iria Diniz</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Distritos Sanitários</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Contatos Diversos</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Fluxos de Exames</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Relação de Exames</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Ferramentas Adm (x3)</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Profissionais</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Pendências Geral</div>
+                <div class="item"><i class="fas fa-check-circle"></i> Consolidado Vagas</div>
+                <div class="item"><i class="fas fa-check-circle"></i> +86 outros painéis</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GRADE CURRICULAR ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate">
+                <span class="badge-section"><i class="fas fa-graduation-cap"></i> Formação</span>
+                <h2>Grade Curricular</h2>
+                <p>Tecnologia em Ciência de Dados • UNINTER • 2.145 horas</p>
+            </div>
+
+            <div class="grade-grid animate">
+                <div class="grade-item">
+                    <h4><i class="fas fa-robot"></i> Inteligência Artificial</h4>
+                    <ul>
+                        <li><span>IA Aplicada</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Cálculo Diferencial</span> <span class="badge">65h</span></li>
+                        <li><span>Linguagem de Programação</span> <span class="badge">65h</span></li>
+                    </ul>
+                </div>
+
+                <div class="grade-item">
+                    <h4><i class="fas fa-code"></i> Programação</h4>
+                    <ul>
+                        <li><span>Estrutura de Dados</span> <span class="badge">65h</span></li>
+                        <li><span>Engenharia de Software</span> <span class="badge">65h</span></li>
+                        <li><span>Atividades Extensionistas I</span> <span class="badge destaque">110h</span></li>
+                    </ul>
+                </div>
+
+                <div class="grade-item">
+                    <h4><i class="fas fa-cloud"></i> Nuvem e Estatística</h4>
+                    <ul>
+                        <li><span>Modelagem Estatística</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Computação em Nuvem</span> <span class="badge">65h</span></li>
+                        <li><span>POO</span> <span class="badge">65h</span></li>
+                    </ul>
+                </div>
+
+                <div class="grade-item">
+                    <h4><i class="fas fa-chart-bar"></i> Dados e Operação</h4>
+                    <ul>
+                        <li><span>Visualização de Dados</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Banco de Dados NoSQL</span> <span class="badge">65h</span></li>
+                        <li><span>Segurança da Informação</span> <span class="badge">65h</span></li>
+                    </ul>
+                </div>
+
+                <div class="grade-item">
+                    <h4><i class="fas fa-database"></i> Gestão de Dados</h4>
+                    <ul>
+                        <li><span>Machine Learning</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Análise Exploratória</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Atividades Extensionistas II</span> <span class="badge destaque">110h</span></li>
+                    </ul>
+                </div>
+
+                <div class="grade-item">
+                    <h4><i class="fas fa-rocket"></i> Aplicação Específica</h4>
+                    <ul>
+                        <li><span>Big Data</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>Deep Learning</span> <span class="badge destaque">★ 65h</span></li>
+                        <li><span>NLP</span> <span class="badge">65h</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="total-hours animate">
+                <h3><i class="fas fa-clock"></i> 2.145 horas</h3>
+                <p>Formação concluída em julho de 2026 • Reconhecido pela Portaria n.º 636/2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="section-header animate">
+                <span class="badge-section"><i class="fas fa-paper-plane"></i> Vamos Conversar</span>
+                <h2>Entre em <span class="highlight">Contato</span></h2>
+                <p>Estou aberta a novas oportunidades e desafios</p>
+            </div>
+
+            <div class="contact-grid animate">
+                <a href="mailto:aninhappessoal@gmail.com" class="contact-card">
+                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info">
+                        <h4>E-mail</h4>
+                        <p>aninhappessoal@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/5531984987116" target="_blank" class="contact-card">
+                    <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="info">
+                        <h4>WhatsApp</h4>
+                        <p>(31) 98498-7116</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="contact-card">
+                    <div class="icon"><i class="fab fa-github"></i></div>
+                    <div class="info">
+                        <h4>GitHub</h4>
+                        <p>AnaDesenvolvedora</p>
+                    </div>
+                </a>
+
+                <a href="#" class="contact-card">
+                    <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+                    <div class="info">
+                        <h4>LinkedIn</h4>
+                        <p>Ana Paula Araújo</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social">
+                <a href="https://github.com/AnaDesenvolvedora" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/5531984987116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:aninhappessoal@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>© 2026 Ana Paula Araújo da Silva • Tecnólogia em Ciência de Dados</p>
+            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 0.3rem;">98 projetos • 15 anos de experiência • UNINTER 2026</p>
+        </div>
     </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate').forEach(el => {
+            if (!el.classList.contains('animate-delay-1') && 
+                !el.classList.contains('animate-delay-2') && 
+                !el.classList.contains('animate-delay-3') && 
+                !el.classList.contains('animate-delay-4') && 
+                !el.classList.contains('animate-delay-5')) {
+                observer.observe(el);
+            }
+        });
+    </script>
 </body>
 </html>
