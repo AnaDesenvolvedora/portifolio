@@ -821,10 +821,10 @@
             color: var(--text-light);
         }
 
-        /* ===== CONTATO ===== */
+        /* ===== CONTATO - CORRIGIDO ===== */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.2rem;
         }
 
@@ -839,6 +839,7 @@
             text-decoration: none;
             color: var(--text);
             transition: all 0.3s ease;
+            min-width: 0;
         }
 
         .contact-card:hover {
@@ -860,17 +861,26 @@
             flex-shrink: 0;
         }
 
+        .contact-card .info {
+            flex: 1;
+            min-width: 0;
+        }
+
         .contact-card .info h4 {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-light);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-bottom: 0.1rem;
         }
 
         .contact-card .info p {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            color: var(--text);
         }
 
         /* ===== FOOTER ===== */
@@ -930,6 +940,8 @@
 
             .hero-stats {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
 
             .hero-avatar {
@@ -966,6 +978,10 @@
             .hero::before, .hero::after {
                 display: none;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -979,8 +995,7 @@
             }
 
             .hero-stats {
-                gap: 1.5rem;
-                flex-wrap: wrap;
+                gap: 1.2rem;
             }
 
             .hero-stats .stat h3 {
@@ -993,6 +1008,14 @@
 
             .grade-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card .info p {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1443,7 +1466,7 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO ===== -->
+    <!-- ===== CONTATO - CORRIGIDO ===== -->
     <section class="section section-alt" id="contato">
         <div class="container">
             <div class="section-header animate">
@@ -1489,7 +1512,7 @@
                     <div class="icon"><i class="fas fa-file-alt"></i></div>
                     <div class="info">
                         <h4>Currículo</h4>
-                        <p>Versão completa em PDF</p>
+                        <p>Versão completa</p>
                     </div>
                 </a>
             </div>
