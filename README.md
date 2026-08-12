@@ -54,13 +54,13 @@ Este é o meu portfólio profissional online, desenvolvido para apresentar minha
 
 ## 📂 Estrutura do Projeto
 
-
+```plaintext
 portifolio/
-├── index.html # Página principal do portfólio
-├── README.md # Este arquivo
-├── foto (1).jpg # Foto de perfil
-└── assets/ # (Opcional) Arquivos adicionais
-
+├── index.html          # Página principal do portfólio
+├── README.md           # Este arquivo
+├── foto (1).jpg        # Foto de perfil
+└── assets/             # (Opcional) Arquivos adicionais
+```
 
 ---
 
