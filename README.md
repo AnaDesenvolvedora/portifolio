@@ -6,13 +6,13 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 [![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
 
-> **Tecnóloga em Ciência de Dados | Especialista em Dashboards | 58 Painéis Interativos Desenvolvidos**
+> **Tecnóloga em Ciência de Dados | Especialista em Dashboards | 98 Painéis Interativos Desenvolvidos**
 
 ---
 
 ## 📋 Sobre o Projeto
 
-Este é o meu portfólio profissional online, desenvolvido para apresentar minha trajetória como **Tecnóloga em Ciência de Dados**, com **15 anos de experiência** na Prefeitura de Contagem e **58 painéis interativos** criados para gestão da regulação em saúde.
+Este é o meu portfólio profissional online, desenvolvido para apresentar minha trajetória como **Tecnóloga em Ciência de Dados**, com **15 anos de experiência** na Prefeitura de Contagem e **98 painéis interativos** criados para gestão da regulação em saúde.
 
 ### 🎯 Objetivo
 - Apresentar minha formação acadêmica e experiência profissional
@@ -33,7 +33,7 @@ Este é o meu portfólio profissional online, desenvolvido para apresentar minha
 | **Experiência** | 15 anos na Prefeitura de Contagem |
 | **Habilidades** | Barras de progresso com minhas competências |
 | **Grade Curricular** | 8 UTAs completas do curso de Ciência de Dados |
-| **Portfólio** | 58 painéis interativos com destaques |
+| **Portfólio** | 98 painéis interativos com destaques |
 | **SWOT** | Análise de forças e oportunidades |
 
 ---
