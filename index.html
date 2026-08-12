@@ -16,26 +16,31 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #2563eb;
-            --accent-light: #3b82f6;
-            --accent-dark: #1d4ed8;
-            --gray: #64748b;
-            --gray-light: #94a3b8;
-            --gray-bg: #f8fafc;
-            --white: #ffffff;
-            --border: #e2e8f0;
+            --primary: #0a1628;
+            --secondary: #1a3a6b;
+            --accent: #00d4ff;
+            --accent2: #7c3aed;
+            --accent3: #10b981;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --bg: #0a1628;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 60px rgba(0, 212, 255, 0.1);
             --radius: 16px;
-            --shadow: 0 4px 20px rgba(0,0,0,0.06);
-            --shadow-hover: 0 12px 40px rgba(0,0,0,0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--gray-bg);
-            color: var(--primary);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -44,16 +49,41 @@
             padding: 0 24px;
         }
 
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.1); }
+            50% { box-shadow: 0 0 60px rgba(0, 212, 255, 0.2); }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+
         /* ===== HEADER ===== */
         .header {
-            background: var(--white);
+            background: rgba(10, 22, 40, 0.92);
             border-bottom: 1px solid var(--border);
             padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
         }
 
         .header .container {
@@ -65,11 +95,14 @@
         .logo {
             font-weight: 800;
             font-size: 1.2rem;
-            color: var(--primary);
+            color: var(--text);
         }
 
         .logo span {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav {
@@ -81,7 +114,7 @@
 
         .nav a {
             text-decoration: none;
-            color: var(--gray);
+            color: var(--text-light);
             font-weight: 500;
             font-size: 0.85rem;
             transition: color 0.3s;
@@ -106,7 +139,7 @@
         }
 
         .section-alt {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .section-header {
@@ -130,11 +163,14 @@
         }
 
         .section-header h2 .highlight {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-header p {
-            color: var(--gray);
+            color: var(--text-light);
             max-width: 600px;
             margin-top: 0.5rem;
             font-size: 1.05rem;
@@ -143,7 +179,33 @@
         /* ===== HERO ===== */
         .hero {
             padding: 80px 0 60px;
-            background: var(--white);
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero-grid {
@@ -151,6 +213,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
@@ -161,18 +225,21 @@
         }
 
         .hero-content h1 .highlight {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-content .subtitle {
             font-size: 1.3rem;
-            color: var(--gray);
+            color: var(--text-light);
             font-weight: 400;
             margin-bottom: 1rem;
         }
 
         .hero-content .bio {
-            color: var(--gray-light);
+            color: var(--text-light);
             font-size: 1.05rem;
             max-width: 500px;
             line-height: 1.8;
@@ -187,13 +254,20 @@
         }
 
         .hero-tag {
-            background: var(--gray-bg);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 50px;
             padding: 0.4rem 1.2rem;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--gray);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
         }
 
         .hero-tag i {
@@ -222,26 +296,26 @@
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             color: white;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
         }
 
         .btn-primary:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
         }
 
         .btn-secondary {
-            background: var(--gray-bg);
-            color: var(--primary);
+            background: var(--card-bg);
+            color: var(--text);
             border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
             border-color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
         }
 
         .hero-avatar {
@@ -249,9 +323,22 @@
             height: 340px;
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid var(--white);
-            box-shadow: var(--shadow-hover);
+            border: 3px solid rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow);
             justify-self: center;
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+            z-index: -1;
+            opacity: 0.2;
+            animation: glow 3s ease-in-out infinite;
         }
 
         .hero-avatar img {
@@ -269,12 +356,15 @@
         .hero-stats .stat h3 {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-stats .stat p {
             font-size: 0.85rem;
-            color: var(--gray);
+            color: var(--text-light);
             font-weight: 500;
         }
 
@@ -286,7 +376,7 @@
         }
 
         .resumo-card {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.8rem;
@@ -295,14 +385,17 @@
         }
 
         .resumo-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
 
         .resumo-card .icon {
             font-size: 2.5rem;
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.8rem;
         }
 
@@ -313,7 +406,7 @@
         }
 
         .resumo-card p {
-            color: var(--gray);
+            color: var(--text-light);
             font-size: 0.9rem;
         }
 
@@ -325,22 +418,22 @@
         }
 
         .project-card {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
 
         .project-card .preview {
             height: 180px;
-            background: linear-gradient(135deg, var(--gray-bg), var(--border));
+            background: linear-gradient(135deg, var(--secondary), var(--bg));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -349,39 +442,40 @@
 
         .project-card .preview i {
             font-size: 3.5rem;
-            color: var(--gray-light);
-            opacity: 0.3;
+            color: var(--text-light);
+            opacity: 0.2;
         }
 
         .project-card .preview .badge-top {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--white);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             padding: 0.2rem 0.8rem;
             border-radius: 50px;
             font-size: 0.65rem;
             font-weight: 700;
-            color: var(--gray);
+            color: var(--text);
             border: 1px solid var(--border);
         }
 
         .project-card .preview .badge-top.gold {
-            color: #b45309;
-            background: #fef3c7;
+            color: #fbbf24;
             border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.15);
         }
 
         .project-card .preview .badge-top.silver {
-            color: #4b5563;
-            background: #f3f4f6;
-            border-color: #9ca3af;
+            color: #94a3b8;
+            border-color: #94a3b8;
+            background: rgba(148, 163, 184, 0.15);
         }
 
         .project-card .preview .badge-top.bronze {
-            color: #92400e;
-            background: #fffbeb;
+            color: #d97706;
             border-color: #d97706;
+            background: rgba(217, 119, 6, 0.15);
         }
 
         .project-card .info {
@@ -395,7 +489,7 @@
         }
 
         .project-card .info p {
-            color: var(--gray);
+            color: var(--text-light);
             font-size: 0.9rem;
             line-height: 1.7;
             margin-bottom: 1rem;
@@ -408,12 +502,13 @@
         }
 
         .project-card .info .techs span {
-            background: var(--gray-bg);
+            background: var(--bg);
             padding: 0.15rem 0.7rem;
             border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 600;
-            color: var(--gray);
+            color: var(--text-light);
+            border: 1px solid var(--border);
         }
 
         .project-card .info .stats {
@@ -423,7 +518,7 @@
             padding-top: 0.8rem;
             border-top: 1px solid var(--border);
             font-size: 0.8rem;
-            color: var(--gray);
+            color: var(--text-light);
         }
 
         .project-card .info .stats i {
@@ -440,13 +535,13 @@
         }
 
         .project-list .item {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 0.6rem 1rem;
             font-size: 0.85rem;
             font-weight: 500;
-            color: var(--gray);
+            color: var(--text-light);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -455,11 +550,12 @@
 
         .project-list .item:hover {
             border-color: var(--accent);
-            color: var(--primary);
+            color: var(--text);
+            transform: translateY(-2px);
         }
 
         .project-list .item i {
-            color: var(--accent);
+            color: var(--accent3);
             font-size: 0.7rem;
         }
 
@@ -471,7 +567,7 @@
         }
 
         .grade-item {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem 1.5rem;
@@ -480,7 +576,7 @@
 
         .grade-item:hover {
             border-color: var(--accent);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
 
         .grade-item h4 {
@@ -502,7 +598,7 @@
             justify-content: space-between;
             padding: 0.25rem 0;
             font-size: 0.85rem;
-            color: var(--gray);
+            color: var(--text-light);
             border-bottom: 1px solid var(--border);
         }
 
@@ -513,22 +609,23 @@
         .grade-item ul li .badge {
             font-size: 0.7rem;
             font-weight: 600;
-            color: var(--gray-light);
-            background: var(--gray-bg);
+            color: var(--text-light);
+            background: var(--bg);
             padding: 0.1rem 0.5rem;
             border-radius: 50px;
         }
 
         .grade-item ul li .badge.destaque {
             color: var(--accent);
-            background: #eff6ff;
+            border: 1px solid var(--accent);
+            background: rgba(0, 212, 255, 0.05);
         }
 
         .total-hours {
             margin-top: 2rem;
             text-align: center;
             padding: 1.5rem;
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
         }
@@ -536,11 +633,14 @@
         .total-hours h3 {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .total-hours p {
-            color: var(--gray);
+            color: var(--text-light);
             font-size: 0.9rem;
         }
 
@@ -574,8 +674,8 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--white);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: 3px solid var(--bg);
             box-shadow: 0 0 0 3px var(--accent);
         }
 
@@ -585,14 +685,15 @@
         }
 
         .timeline-item .company {
-            color: var(--gray);
+            color: var(--text-light);
             font-weight: 600;
         }
 
         .timeline-item .period {
-            color: var(--gray-light);
+            color: var(--text-light);
             font-size: 0.85rem;
             margin-bottom: 0.5rem;
+            opacity: 0.7;
         }
 
         .timeline-item ul {
@@ -602,7 +703,7 @@
 
         .timeline-item ul li {
             padding: 0.2rem 0;
-            color: var(--gray);
+            color: var(--text-light);
             font-size: 0.9rem;
             display: flex;
             align-items: flex-start;
@@ -623,7 +724,7 @@
         }
 
         .skill-card {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem 1.5rem;
@@ -632,7 +733,7 @@
 
         .skill-card:hover {
             border-color: var(--accent);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
 
         .skill-card h4 {
@@ -657,12 +758,12 @@
             justify-content: space-between;
             font-size: 0.8rem;
             font-weight: 500;
-            color: var(--gray);
+            color: var(--text-light);
         }
 
         .skill-bar .track {
             height: 6px;
-            background: var(--gray-bg);
+            background: var(--bg);
             border-radius: 10px;
             overflow: hidden;
             margin-top: 0.2rem;
@@ -670,7 +771,7 @@
 
         .skill-bar .track .fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
             border-radius: 10px;
         }
 
@@ -682,7 +783,7 @@
         }
 
         .cert-card {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem 1.5rem;
@@ -694,14 +795,14 @@
 
         .cert-card:hover {
             border-color: var(--accent);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
 
         .cert-card .icon {
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: var(--gray-bg);
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -717,7 +818,7 @@
 
         .cert-card .info p {
             font-size: 0.8rem;
-            color: var(--gray);
+            color: var(--text-light);
         }
 
         /* ===== CONTATO ===== */
@@ -728,7 +829,7 @@
         }
 
         .contact-card {
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem 1.5rem;
@@ -736,13 +837,13 @@
             align-items: center;
             gap: 1rem;
             text-decoration: none;
-            color: var(--primary);
+            color: var(--text);
             transition: all 0.3s ease;
         }
 
         .contact-card:hover {
             border-color: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
         }
 
@@ -750,7 +851,7 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: var(--gray-bg);
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -761,7 +862,7 @@
 
         .contact-card .info h4 {
             font-size: 0.75rem;
-            color: var(--gray);
+            color: var(--text-light);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -777,7 +878,7 @@
             padding: 40px 0;
             border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--gray);
+            color: var(--text-light);
             font-size: 0.85rem;
         }
 
@@ -792,12 +893,12 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--white);
+            background: var(--card-bg);
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
+            color: var(--text-light);
             transition: all 0.3s ease;
             text-decoration: none;
         }
@@ -805,7 +906,7 @@
         .footer .social a:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         /* ===== RESPONSIVO ===== */
@@ -861,6 +962,10 @@
             .hero {
                 padding: 50px 0 40px;
             }
+
+            .hero::before, .hero::after {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
@@ -875,6 +980,7 @@
 
             .hero-stats {
                 gap: 1.5rem;
+                flex-wrap: wrap;
             }
 
             .hero-stats .stat h3 {
@@ -913,11 +1019,11 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1>Oi, sou <span class="highlight">Ana </span></h1>
-                    <p class="subtitle">Formada em Tecnólogia em Ciência de Dados</p>
-                    <p class="bio">Especialista em dashboards interativos e análise de dados para tomada de decisão. <strong>98 projetos</strong> desenvolvidos para gestão da saúde pública na Prefeitura de Contagem.</p>
+                    <h1 class="animate animate-delay-1">Oi, sou <span class="highlight">Ana</span></h1>
+                    <p class="subtitle animate animate-delay-2">Formada em Tecnologia em Ciência de Dados</p>
+                    <p class="bio animate animate-delay-3">Especialista em dashboards interativos e análise de dados para tomada de decisão. <strong style="color: var(--accent);">98 projetos</strong> desenvolvidos para gestão da saúde pública na Prefeitura de Contagem.</p>
                     
-                    <div class="hero-tags">
+                    <div class="hero-tags animate animate-delay-3">
                         <span class="hero-tag"><i class="fas fa-chart-line"></i> 98 Dashboards</span>
                         <span class="hero-tag"><i class="fas fa-graduation-cap"></i> UNINTER 2026</span>
                         <span class="hero-tag"><i class="fas fa-code"></i> JavaScript • Python • SQL</span>
@@ -925,7 +1031,7 @@
                         <span class="hero-tag"><i class="fas fa-calendar"></i> 15 anos de experiência</span>
                     </div>
 
-                    <div class="hero-buttons">
+                    <div class="hero-buttons animate animate-delay-4">
                         <a href="#projetos" class="btn btn-primary">
                             <i class="fas fa-rocket"></i> Ver Projetos
                         </a>
@@ -934,7 +1040,7 @@
                         </a>
                     </div>
 
-                    <div class="hero-stats">
+                    <div class="hero-stats animate animate-delay-4">
                         <div class="stat">
                             <h3>98</h3>
                             <p>Projetos</p>
@@ -954,7 +1060,7 @@
                     </div>
                 </div>
 
-                <div class="hero-avatar">
+                <div class="hero-avatar animate animate-delay-2">
                     <img src="https://raw.githubusercontent.com/AninhaTata/portifolio/main/foto%20(1).jpg" alt="Ana Paula">
                 </div>
             </div>
@@ -964,29 +1070,29 @@
     <!-- ===== RESUMO ===== -->
     <section class="section section-alt">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-star"></i> Diferenciais</span>
                 <h2>O que me <span class="highlight">destaca</span></h2>
                 <p>Combinação única de formação acadêmica e experiência prática</p>
             </div>
 
             <div class="resumo-grid">
-                <div class="resumo-card">
+                <div class="resumo-card animate animate-delay-1">
                     <div class="icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>98 Dashboards</h3>
                     <p>Painéis interativos desenvolvidos para gestão da saúde pública</p>
                 </div>
-                <div class="resumo-card">
+                <div class="resumo-card animate animate-delay-2">
                     <div class="icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Formação Superior</h3>
-                    <p>Tecnólogia em Ciência de Dados pela UNINTER (2026)</p>
+                    <p>Tecnologia em Ciência de Dados pela UNINTER (2026)</p>
                 </div>
-                <div class="resumo-card">
+                <div class="resumo-card animate animate-delay-3">
                     <div class="icon"><i class="fas fa-briefcase"></i></div>
                     <h3>15 Anos de Experiência</h3>
                     <p>Trajetória consolidada na administração pública</p>
                 </div>
-                <div class="resumo-card">
+                <div class="resumo-card animate animate-delay-4">
                     <div class="icon"><i class="fas fa-code"></i></div>
                     <h3>Full Stack de Dados</h3>
                     <p>Da coleta à visualização, com JavaScript, Python e SQL</p>
@@ -998,7 +1104,7 @@
     <!-- ===== PROJETOS ===== -->
     <section class="section" id="projetos">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-star"></i> Destaques</span>
                 <h2>Principais <span class="highlight">Projetos</span></h2>
                 <p>Dashboards interativos que desenvolvi para gestão da regulação em saúde</p>
@@ -1006,7 +1112,7 @@
 
             <div class="projects-grid">
                 <!-- Card 1 -->
-                <div class="project-card">
+                <div class="project-card animate animate-delay-1">
                     <div class="preview">
                         <i class="fas fa-chart-pie"></i>
                         <span class="badge-top gold">🥇 Destaque</span>
@@ -1028,7 +1134,7 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="project-card">
+                <div class="project-card animate animate-delay-2">
                     <div class="preview">
                         <i class="fas fa-calendar-check"></i>
                         <span class="badge-top silver">🥈 Destaque</span>
@@ -1050,7 +1156,7 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="project-card">
+                <div class="project-card animate animate-delay-3">
                     <div class="preview">
                         <i class="fas fa-exclamation-triangle"></i>
                         <span class="badge-top bronze">🥉 Destaque</span>
@@ -1074,7 +1180,7 @@
 
             <!-- Lista completa -->
             <div style="margin-top: 2.5rem;">
-                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem;">📊 Lista completa dos 98 projetos</h3>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text);">📊 Lista completa dos 98 projetos</h3>
                 <div class="project-list">
                     <div class="item"><i class="fas fa-check-circle"></i> Ouvidoria</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Censo IBGE</div>
@@ -1097,19 +1203,19 @@
     <!-- ===== EXPERIÊNCIA ===== -->
     <section class="section section-alt" id="experiencia">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-briefcase"></i> Trajetória</span>
                 <h2>Experiência <span class="highlight">Profissional</span></h2>
                 <p>15 anos de atuação na administração pública</p>
             </div>
 
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item animate animate-delay-1">
                     <h3>Assistente Administrativo / Analista de Dados</h3>
                     <p class="company">Prefeitura Municipal de Contagem</p>
                     <p class="period">08/2011 – Atual (15 anos)</p>
                     <ul>
-                        <li><i class="fas fa-circle"></i> Desenvolvimento de <strong>98 painéis interativos</strong> para gestão da regulação em saúde</li>
+                        <li><i class="fas fa-circle"></i> Desenvolvimento de <strong style="color: var(--accent);">98 painéis interativos</strong> para gestão da regulação em saúde</li>
                         <li><i class="fas fa-circle"></i> Análise de banco de dados para formulação de relatórios e higienização da fila de espera do SUS</li>
                         <li><i class="fas fa-circle"></i> Elaboração de planilhas e consolidados para tomada de decisões estratégicas</li>
                         <li><i class="fas fa-circle"></i> Criação de consolidados para avaliação de indicadores de desempenho</li>
@@ -1117,7 +1223,7 @@
                     </ul>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item animate animate-delay-2">
                     <h3>Operador de Telemarketing</h3>
                     <p class="company">AeC</p>
                     <p class="period">10/2009 – 06/2010</p>
@@ -1128,7 +1234,7 @@
                     </ul>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item animate animate-delay-3">
                     <h3>Auxiliar de Produção</h3>
                     <p class="company">Schneider Service Eletro Eletrônico Ltda</p>
                     <p class="period">12/2006 – 12/2009</p>
@@ -1145,14 +1251,14 @@
     <!-- ===== HABILIDADES ===== -->
     <section class="section" id="habilidades">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-code"></i> Competências</span>
                 <h2>Habilidades <span class="highlight">Técnicas</span></h2>
                 <p>Minhas principais competências em análise de dados e desenvolvimento</p>
             </div>
 
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card animate animate-delay-1">
                     <h4><i class="fas fa-database"></i> Banco de Dados</h4>
                     <div class="skill-bar">
                         <div class="label"><span>MySQL</span><span>80%</span></div>
@@ -1164,7 +1270,7 @@
                     </div>
                 </div>
 
-                <div class="skill-card">
+                <div class="skill-card animate animate-delay-2">
                     <h4><i class="fas fa-chart-bar"></i> Análise de Dados</h4>
                     <div class="skill-bar">
                         <div class="label"><span>Excel</span><span>95%</span></div>
@@ -1176,7 +1282,7 @@
                     </div>
                 </div>
 
-                <div class="skill-card">
+                <div class="skill-card animate animate-delay-3">
                     <h4><i class="fas fa-laptop-code"></i> Programação</h4>
                     <div class="skill-bar">
                         <div class="label"><span>JavaScript</span><span>85%</span></div>
@@ -1188,7 +1294,7 @@
                     </div>
                 </div>
 
-                <div class="skill-card">
+                <div class="skill-card animate animate-delay-4">
                     <h4><i class="fas fa-tools"></i> Ferramentas</h4>
                     <div class="skill-bar">
                         <div class="label"><span>Chart.js</span><span>90%</span></div>
@@ -1206,14 +1312,14 @@
     <!-- ===== GRADE CURRICULAR ===== -->
     <section class="section section-alt" id="grade">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-graduation-cap"></i> Formação</span>
                 <h2>Grade Curricular</h2>
                 <p>Tecnologia em Ciência de Dados • UNINTER • 2.145 horas • Concluído em 2026</p>
             </div>
 
             <div class="grade-grid">
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-1">
                     <h4><i class="fas fa-seedling"></i> UTA Núcleo Introdutório</h4>
                     <ul>
                         <li><span>Lógica de Programação</span> <span class="badge">65h</span></li>
@@ -1223,7 +1329,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-2">
                     <h4><i class="fas fa-robot"></i> UTA Inteligência Artificial</h4>
                     <ul>
                         <li><span>IA Aplicada</span> <span class="badge destaque">★ 65h</span></li>
@@ -1233,7 +1339,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-3">
                     <h4><i class="fas fa-code"></i> UTA Programação</h4>
                     <ul>
                         <li><span>Álgebra Linear</span> <span class="badge">65h</span></li>
@@ -1243,7 +1349,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-1">
                     <h4><i class="fas fa-cloud"></i> UTA Nuvem e Estatística</h4>
                     <ul>
                         <li><span>Ferramentas Dev Web</span> <span class="badge">65h</span></li>
@@ -1253,7 +1359,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-2">
                     <h4><i class="fas fa-database"></i> UTA Dados e Operação</h4>
                     <ul>
                         <li><span>Computação Paralela</span> <span class="badge">65h</span></li>
@@ -1263,7 +1369,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-3">
                     <h4><i class="fas fa-chart-pie"></i> UTA Gestão de Dados</h4>
                     <ul>
                         <li><span>Machine Learning</span> <span class="badge destaque">★ 65h</span></li>
@@ -1274,7 +1380,7 @@
                     </ul>
                 </div>
 
-                <div class="grade-item">
+                <div class="grade-item animate animate-delay-4">
                     <h4><i class="fas fa-rocket"></i> UTA Aplicação Específica</h4>
                     <ul>
                         <li><span>Big Data</span> <span class="badge destaque">★ 65h</span></li>
@@ -1285,7 +1391,7 @@
                 </div>
             </div>
 
-            <div class="total-hours">
+            <div class="total-hours animate">
                 <h3><i class="fas fa-clock" style="margin-right: 0.5rem;"></i> 2.145 horas</h3>
                 <p>Formação concluída em julho de 2026 • Reconhecido pela Portaria n.º 636/2024</p>
             </div>
@@ -1295,14 +1401,14 @@
     <!-- ===== CERTIFICAÇÕES ===== -->
     <section class="section" id="certificacoes">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-certificate"></i> Certificados</span>
                 <h2>Certificações e <span class="highlight">Cursos</span></h2>
                 <p>Formação complementar que agrega valor à minha trajetória</p>
             </div>
 
             <div class="certs-grid">
-                <div class="cert-card">
+                <div class="cert-card animate animate-delay-1">
                     <div class="icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="info">
                         <h4>Assistente Administrativo</h4>
@@ -1310,7 +1416,7 @@
                     </div>
                 </div>
 
-                <div class="cert-card">
+                <div class="cert-card animate animate-delay-2">
                     <div class="icon"><i class="fas fa-chart-line"></i></div>
                     <div class="info">
                         <h4>Desafio DashEm7</h4>
@@ -1318,15 +1424,15 @@
                     </div>
                 </div>
 
-                <div class="cert-card">
+                <div class="cert-card animate animate-delay-3">
                     <div class="icon"><i class="fas fa-database"></i></div>
                     <div class="info">
-                        <h4>Tecnólogia em Ciência de Dados</h4>
+                        <h4>Tecnologia em Ciência de Dados</h4>
                         <p>UNINTER • 2.145h • Concluído em 2026</p>
                     </div>
                 </div>
 
-                <div class="cert-card">
+                <div class="cert-card animate animate-delay-4">
                     <div class="icon"><i class="fas fa-trophy"></i></div>
                     <div class="info">
                         <h4>98 Dashboards Desenvolvidos</h4>
@@ -1340,14 +1446,14 @@
     <!-- ===== CONTATO ===== -->
     <section class="section section-alt" id="contato">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate">
                 <span class="label"><i class="fas fa-paper-plane"></i> Contato</span>
                 <h2>Vamos <span class="highlight">conversar</span>?</h2>
                 <p>Estou disponível para novos desafios e oportunidades profissionais</p>
             </div>
 
             <div class="contact-grid">
-                <a href="mailto:aninhappessoal@gmail.com" class="contact-card">
+                <a href="mailto:aninhappessoal@gmail.com" class="contact-card animate animate-delay-1">
                     <div class="icon"><i class="fas fa-envelope"></i></div>
                     <div class="info">
                         <h4>E-mail</h4>
@@ -1355,7 +1461,7 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/5531984987116" target="_blank" class="contact-card">
+                <a href="https://wa.me/5531984987116" target="_blank" class="contact-card animate animate-delay-2">
                     <div class="icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="info">
                         <h4>WhatsApp</h4>
@@ -1363,7 +1469,7 @@
                     </div>
                 </a>
 
-                <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="contact-card">
+                <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="contact-card animate animate-delay-3">
                     <div class="icon"><i class="fab fa-github"></i></div>
                     <div class="info">
                         <h4>GitHub</h4>
@@ -1371,7 +1477,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="contact-card">
+                <a href="#" class="contact-card animate animate-delay-4">
                     <div class="icon"><i class="fab fa-linkedin-in"></i></div>
                     <div class="info">
                         <h4>LinkedIn</h4>
@@ -1379,7 +1485,7 @@
                     </div>
                 </a>
 
-                <a href="https://aninhatata.github.io/curriculo/" target="_blank" class="contact-card">
+                <a href="https://aninhatata.github.io/curriculo/" target="_blank" class="contact-card animate animate-delay-1">
                     <div class="icon"><i class="fas fa-file-alt"></i></div>
                     <div class="info">
                         <h4>Currículo</h4>
@@ -1400,8 +1506,8 @@
                 <a href="mailto:aninhappessoal@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
             <p><strong>Ana Paula Araújo da Silva</strong></p>
-            <p style="font-size: 0.85rem; margin-top: 0.2rem;">Tecnóloga em Ciência de Dados • 98 projetos • 15 anos de experiência</p>
-            <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem;">© 2026 • Todos os direitos reservados</p>
+            <p style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--text-light);">Tecnóloga em Ciência de Dados • 98 projetos • 15 anos de experiência</p>
+            <p style="font-size: 0.75rem; opacity: 0.3; margin-top: 0.5rem;">© 2026 • Todos os direitos reservados</p>
         </div>
     </footer>
 </body>
