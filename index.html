@@ -318,6 +318,17 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
         }
 
+        .btn-freelancer {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+        }
+
+        .btn-freelancer:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3);
+        }
+
         .hero-avatar {
             width: 340px;
             height: 340px;
@@ -408,6 +419,80 @@
         .resumo-card p {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        /* ===== FREELANCER ===== */
+        .freelancer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .freelancer-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .freelancer-card:hover {
+            transform: translateY(-8px);
+            border-color: #f59e0b;
+            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.05);
+        }
+
+        .freelancer-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .freelancer-card .icon.blue { color: var(--accent); }
+        .freelancer-card .icon.gold { color: #f59e0b; }
+        .freelancer-card .icon.green { color: var(--accent3); }
+        .freelancer-card .icon.purple { color: var(--accent2); }
+
+        .freelancer-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .freelancer-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .freelancer-highlight {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05));
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .freelancer-highlight h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f59e0b;
+        }
+
+        .freelancer-highlight p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .freelancer-highlight .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* ===== PROJETOS ===== */
@@ -821,7 +906,7 @@
             color: var(--text-light);
         }
 
-        /* ===== CONTATO - CORRIGIDO ===== */
+        /* ===== CONTATO ===== */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -881,6 +966,19 @@
             word-break: break-word;
             overflow-wrap: break-word;
             color: var(--text);
+        }
+
+        .contact-card.gold {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .contact-card.gold:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.05);
+        }
+
+        .contact-card.gold .icon {
+            color: #f59e0b;
         }
 
         /* ===== FOOTER ===== */
@@ -982,6 +1080,10 @@
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .freelancer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1014,8 +1116,16 @@
                 grid-template-columns: 1fr;
             }
 
+            .freelancer-grid {
+                grid-template-columns: 1fr;
+            }
+
             .contact-card .info p {
                 font-size: 0.85rem;
+            }
+
+            .freelancer-highlight {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -1027,6 +1137,7 @@
             <div class="logo">Ana<span>Paula</span></div>
             <ul class="nav">
                 <li><a href="#sobre" class="active">Sobre</a></li>
+                <li><a href="#freelancer">Freelancer</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#experiencia">Experiência</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
@@ -1044,19 +1155,23 @@
                 <div class="hero-content">
                     <h1 class="animate animate-delay-1">Oi, sou <span class="highlight">Ana</span></h1>
                     <p class="subtitle animate animate-delay-2">Formada em Tecnologia em Ciência de Dados</p>
-                    <p class="bio animate animate-delay-3">Especialista em dashboards interativos e análise de dados para tomada de decisão. <strong style="color: var(--accent);">98 projetos</strong> desenvolvidos para varios setores.</p>
+                    <p class="bio animate animate-delay-3">Especialista em dashboards interativos e análise de dados para tomada de decisão. <strong style="color: var(--accent);">98 projetos</strong> desenvolvidos para vários setores.</p>
                     
                     <div class="hero-tags animate animate-delay-3">
                         <span class="hero-tag"><i class="fas fa-chart-line"></i> 98 Dashboards</span>
                         <span class="hero-tag"><i class="fas fa-graduation-cap"></i> UNINTER 2026</span>
                         <span class="hero-tag"><i class="fas fa-code"></i> JavaScript • Python • SQL</span>
-                        <span class="hero-tag"><i class="fas fa-heart"></i> Saúde Pública</span>
-                        <span class="hero-tag"><i class="fas fa-calendar"></i> 15 anos de experiência no setor público</span>
+                        <span class="hero-tag"><i class="fas fa-laptop-code"></i> Desenvolvimento Web</span>
+                        <span class="hero-tag"><i class="fas fa-briefcase"></i> Freelancer</span>
+                        <span class="hero-tag"><i class="fas fa-calendar"></i> 15 anos no setor público</span>
                     </div>
 
                     <div class="hero-buttons animate animate-delay-4">
                         <a href="#projetos" class="btn btn-primary">
                             <i class="fas fa-rocket"></i> Ver Projetos
+                        </a>
+                        <a href="#freelancer" class="btn btn-freelancer">
+                            <i class="fas fa-briefcase"></i> Freelancer
                         </a>
                         <a href="#contato" class="btn btn-secondary">
                             <i class="fas fa-paper-plane"></i> Contato
@@ -1067,10 +1182,6 @@
                         <div class="stat">
                             <h3>98</h3>
                             <p>Projetos</p>
-                        </div>
-                        <div class="stat">
-                            <h3>15</h3>
-                            <p>Anos de experiência</p>
                         </div>
                         <div class="stat">
                             <h3>2.145</h3>
@@ -1096,14 +1207,14 @@
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-star"></i> Diferenciais</span>
                 <h2>O que me <span class="highlight">destaca</span></h2>
-                <p>Combinação única de formação acadêmica e experiência prática</p>
+                <p>Combinação única de formação acadêmica e experiência prática.</p>
             </div>
 
             <div class="resumo-grid">
                 <div class="resumo-card animate animate-delay-1">
                     <div class="icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>98 Dashboards</h3>
-                    <p>Painéis interativos desenvolvidos para gestão da saúde pública</p>
+                    <p>Painéis interativos desenvolvidos para vários setores.</p>
                 </div>
                 <div class="resumo-card animate animate-delay-2">
                     <div class="icon"><i class="fas fa-graduation-cap"></i></div>
@@ -1112,8 +1223,8 @@
                 </div>
                 <div class="resumo-card animate animate-delay-3">
                     <div class="icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>15 Anos de Experiência</h3>
-                    <p>Trajetória consolidada na administração pública</p>
+                    <h3>15 Anos no setor público</h3>
+                    <p>Trajetória consolidada com experiência em análise de dados.</p>
                 </div>
                 <div class="resumo-card animate animate-delay-4">
                     <div class="icon"><i class="fas fa-code"></i></div>
@@ -1124,13 +1235,63 @@
         </div>
     </section>
 
+    <!-- ===== FREELANCER ===== -->
+    <section class="section" id="freelancer">
+        <div class="container">
+            <div class="section-header animate">
+                <span class="label"><i class="fas fa-briefcase"></i> Serviços</span>
+                <h2>Atuação como <span class="highlight">Freelancer</span></h2>
+                <p>Ofereço soluções digitais para pequenos negócios e projetos pessoais.</p>
+            </div>
+
+            <div class="freelancer-grid">
+                <div class="freelancer-card animate animate-delay-1">
+                    <div class="icon blue"><i class="fas fa-code"></i></div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criação de sites estáticos, landing pages e páginas institucionais com HTML, CSS e JavaScript puro.</p>
+                </div>
+
+                <div class="freelancer-card animate animate-delay-2">
+                    <div class="icon gold"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Design de Interfaces</h3>
+                    <p>Layouts modernos, responsivos e com foco na experiência do usuário para pequenos negócios.</p>
+                </div>
+
+                <div class="freelancer-card animate animate-delay-3">
+                    <div class="icon green"><i class="fas fa-chart-line"></i></div>
+                    <h3>Dashboards Customizados</h3>
+                    <p>Painéis interativos para acompanhamento de métricas e tomada de decisão.</p>
+                </div>
+
+                <div class="freelancer-card animate animate-delay-4">
+                    <div class="icon purple"><i class="fas fa-rocket"></i></div>
+                    <h3>Consultoria Digital</h3>
+                    <p>Auxílio na presença online de pequenos negócios, desde a ideia até a entrega final.</p>
+                </div>
+            </div>
+
+            <div class="freelancer-highlight animate">
+                <h3><i class="fas fa-external-link-alt" style="margin-right: 0.5rem;"></i> Conheça meu trabalho</h3>
+                <p>Visite meu site de serviços digitais e veja os projetos que já desenvolvi como freelancer.</p>
+                <div class="btn-group">
+                    <a href="https://datadesh-site-da-empresa.github.io/servicosdigitais/#projetos" target="_blank" class="btn btn-freelancer">
+                        <i class="fas fa-globe"></i> Serviços Digitais
+                    </a>
+                    <a href="https://github.com/datadeshsolucoes-design" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> Portfólio GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== PROJETOS ===== -->
-    <section class="section" id="projetos">
+    <section class="section section-alt" id="projetos">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-star"></i> Destaques</span>
                 <h2>Principais <span class="highlight">Projetos</span></h2>
-                <p>Dashboards interativos que desenvolvi para gestão da regulação em saúde</p>
+                <p>Dashboards interativos que já desenvolvi ao longo da minha carreira.</p>
             </div>
 
             <div class="projects-grid">
@@ -1208,7 +1369,6 @@
                     <div class="item"><i class="fas fa-check-circle"></i> Ouvidoria</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Censo IBGE</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Exames Laboratoriais</div>
-                    <div class="item"><i class="fas fa-check-circle"></i> CCE Iria Diniz</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Distritos Sanitários</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Contatos Diversos</div>
                     <div class="item"><i class="fas fa-check-circle"></i> Fluxos de Exames</div>
@@ -1224,12 +1384,11 @@
     </section>
 
     <!-- ===== EXPERIÊNCIA ===== -->
-    <section class="section section-alt" id="experiencia">
+    <section class="section" id="experiencia">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-briefcase"></i> Trajetória</span>
                 <h2>Experiência <span class="highlight">Profissional</span></h2>
-                <p>15 anos de atuação na administração pública</p>
             </div>
 
             <div class="timeline">
@@ -1238,7 +1397,7 @@
                     <p class="company">Prefeitura Municipal de Contagem</p>
                     <p class="period">08/2011 – Atual (15 anos)</p>
                     <ul>
-                        <li><i class="fas fa-circle"></i> Desenvolvimento de <strong style="color: var(--accent);">98 painéis interativos</strong> para gestão da regulação em saúde</li>
+                        <li><i class="fas fa-circle"></i> Desenvolvimento de <strong style="color: var(--accent);">vários painéis interativos</strong> para gestão da regulação em saúde</li>
                         <li><i class="fas fa-circle"></i> Análise de banco de dados para formulação de relatórios e higienização da fila de espera do SUS</li>
                         <li><i class="fas fa-circle"></i> Elaboração de planilhas e consolidados para tomada de decisões estratégicas</li>
                         <li><i class="fas fa-circle"></i> Criação de consolidados para avaliação de indicadores de desempenho</li>
@@ -1272,7 +1431,7 @@
     </section>
 
     <!-- ===== HABILIDADES ===== -->
-    <section class="section" id="habilidades">
+    <section class="section section-alt" id="habilidades">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-code"></i> Competências</span>
@@ -1281,18 +1440,6 @@
             </div>
 
             <div class="skills-grid">
-                <div class="skill-card animate animate-delay-1">
-                    <h4><i class="fas fa-database"></i> Banco de Dados</h4>
-                    <div class="skill-bar">
-                        <div class="label"><span>MySQL</span><span>80%</span></div>
-                        <div class="track"><div class="fill" style="width:80%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="label"><span>NoSQL</span><span>70%</span></div>
-                        <div class="track"><div class="fill" style="width:70%"></div></div>
-                    </div>
-                </div>
-
                 <div class="skill-card animate animate-delay-2">
                     <h4><i class="fas fa-chart-bar"></i> Análise de Dados</h4>
                     <div class="skill-bar">
@@ -1316,6 +1463,18 @@
                         <div class="track"><div class="fill" style="width:75%"></div></div>
                     </div>
                 </div>
+                
+                <div class="skill-card animate animate-delay-1">
+                    <h4><i class="fas fa-database"></i> Banco de Dados</h4>
+                    <div class="skill-bar">
+                        <div class="label"><span>MySQL</span><span>80%</span></div>
+                        <div class="track"><div class="fill" style="width:80%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="label"><span>NoSQL</span><span>70%</span></div>
+                        <div class="track"><div class="fill" style="width:70%"></div></div>
+                    </div>
+                </div>
 
                 <div class="skill-card animate animate-delay-4">
                     <h4><i class="fas fa-tools"></i> Ferramentas</h4>
@@ -1333,7 +1492,7 @@
     </section>
 
     <!-- ===== GRADE CURRICULAR ===== -->
-    <section class="section section-alt" id="grade">
+    <section class="section" id="grade">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-graduation-cap"></i> Formação</span>
@@ -1422,12 +1581,12 @@
     </section>
 
     <!-- ===== CERTIFICAÇÕES ===== -->
-    <section class="section" id="certificacoes">
+    <section class="section section-alt" id="certificacoes">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-certificate"></i> Certificados</span>
                 <h2>Certificações e <span class="highlight">Cursos</span></h2>
-                <p>Formação complementar que agrega valor à minha trajetória</p>
+                <p>Formação complementar que agrega valor à minha trajetória.</p>
             </div>
 
             <div class="certs-grid">
@@ -1466,13 +1625,13 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO - CORRIGIDO ===== -->
-    <section class="section section-alt" id="contato">
+    <!-- ===== CONTATO ===== -->
+    <section class="section" id="contato">
         <div class="container">
             <div class="section-header animate">
                 <span class="label"><i class="fas fa-paper-plane"></i> Contato</span>
                 <h2>Vamos <span class="highlight">conversar</span>?</h2>
-                <p>Estou disponível para novos desafios e oportunidades profissionais</p>
+                <p>Estou disponível para novos desafios e oportunidades profissionais.</p>
             </div>
 
             <div class="contact-grid">
@@ -1500,18 +1659,26 @@
                     </div>
                 </a>
 
-                <a href="#" class="contact-card animate animate-delay-4">
-                    <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+                <a href="https://github.com/datadeshsolucoes-design" target="_blank" class="contact-card gold animate animate-delay-4">
+                    <div class="icon"><i class="fab fa-github"></i></div>
                     <div class="info">
-                        <h4>LinkedIn</h4>
-                        <p>Ana Paula Araújo</p>
+                        <h4>GitHub Freelancer</h4>
+                        <p>datadeshsolucoes-design</p>
                     </div>
                 </a>
 
-                <a href="https://anadesenvolvedora.github.io/curriculo/" target="_blank" class="contact-card animate animate-delay-1">
+                <a href="https://datadesh-site-da-empresa.github.io/servicosdigitais/#projetos" target="_blank" class="contact-card gold animate animate-delay-1">
+                    <div class="icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="info">
+                        <h4>Site Freelancer</h4>
+                        <p>Serviços Digitais</p>
+                    </div>
+                </a>
+
+                <a href="https://anadesenvolvedora.github.io/portifolio/#sobre" target="_blank" class="contact-card animate animate-delay-2">
                     <div class="icon"><i class="fas fa-file-alt"></i></div>
                     <div class="info">
-                        <h4>Currículo</h4>
+                        <h4>Portfólio</h4>
                         <p>Versão completa</p>
                     </div>
                 </a>
@@ -1524,12 +1691,14 @@
         <div class="container">
             <div class="social">
                 <a href="https://github.com/AnaDesenvolvedora" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/datadeshsolucoes-design" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://wa.me/5531984987116" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:aninhappessoal@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
             <p><strong>Ana Paula Araújo da Silva</strong></p>
             <p style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--text-light);">Tecnóloga em Ciência de Dados • 98 projetos • 15 anos de experiência</p>
+            <p style="font-size: 0.85rem; color: var(--text-light);">Freelancer • Desenvolvimento Web • Serviços Digitais</p>
             <p style="font-size: 0.75rem; opacity: 0.3; margin-top: 0.5rem;">© 2026 • Todos os direitos reservados</p>
         </div>
     </footer>
