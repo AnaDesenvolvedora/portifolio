@@ -1,4 +1,4 @@
-![Banner](banner.png)
+![Banner]([banner.png](https://github.com/AnaDesenvolvedora/portifolio/blob/main/banners.png))
 
 # 🚀 Portfólio Profissional — Ana Paula Araújo da Silva
 
